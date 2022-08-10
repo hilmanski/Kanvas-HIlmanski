@@ -50,8 +50,14 @@
 </div>
 
 <div id="forms">
+	<div class=" flex">
+		<p style="width:160px;">Nama</p>
+		<p style="width:160px;">Harga</p>
+		<p style="width:160px;">Total Bahan</p>
+		<p style="width:160px;">Yang digunakan <br> (dari total bahan)</p>
+	</div>
 	<div class="form_row">
-		<label>Bahan: </label><br>
+		<label>Masukkan Bahan: </label><br>
 		<input class='input_name' type="text" placeholder="Nama bahan"/>
 		<input class='input_price' type="number" placeholder="Harga bahan"/>
 		<input class='input_qt_total' type="number" placeholder="Total bahan"/>
@@ -152,13 +158,13 @@ button{
 <li> Telur 1 rak = 30 butir = Rp.40.0000  </li>
 <li> Tepung 1 kg = 1000 gr = Rp.20.0000  </li>
  
-<p><b>Maka, masukkan di kalkukator:</b></p>
+<p><b>Maka, masukkan di kalkukator atas(sesuai urutan):</b></p>
 <pre>
     <code>
-Nama   | Harga | Total  | Yang digunakan
+Nama   | Harga | Total Bahan | Yang digunakan
 -----------------------------------------
-Telur  | 40000 | 30     |  2  
-Tepung | 20000 | 1000   |  200  
+Telur  | 40000 |     30      |  2  
+Tepung | 20000 |    1000     |  200  
 
 *harga tidak perlu pakai Rp, koma atau titik
 *satuan takaran tidak perlu ditulis
@@ -175,6 +181,10 @@ Ada biaya lain, seperti:  </p>
 <li> Tenaga kerja  </li>
 <li> Modal alat  </li>
 <li> Biaya operasional (listrik, gas, etc.. )  </li>
+
+<br>
+<h2> Alasan dibuat </h2>
+<p> Seorang anggota keluarga senang bikin kue, tapi kesulitan menghitung modalnya.</p>
 
 <br><br><br>
 </main>
