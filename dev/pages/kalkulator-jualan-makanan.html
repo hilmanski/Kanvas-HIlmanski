@@ -1,0 +1,151 @@
+@layout(base) 
+
+@section(title, Kalkulator Jualan makanan - hilmanski)
+@section(desc, Bagaimana cara menghitung harga jualan makanan berdasarkan modal. Coba Kalkulator bahan makanan ini)
+@section(image, https://i.ibb.co/4gCGbFp/Screen-Shot-2021-09-24-at-2-34-31-PM.png)
+
+@section(content)
+<section>
+    <main>
+        @import(menu)		
+        
+        <p>*Jika bingung, baca cara menggunakannya di bawah.</p>
+
+        <h2>Kalkulator</h2>
+        <p>Silahkan masukkan daftar bahan makananamu per porsi/sajian yang dijual.</p>
+
+<section id="calculator">
+<div class='is-center'>
+	<h3> 📲 Kalkulator, Mari kita coba! </h3>
+</div>
+
+<div id="forms">
+	<div class="form_row">
+		<label>Bahan: </label><br>
+		<input class='input_name' type="text" placeholder="Nama bahan"/>
+		<input class='input_price' type="number" placeholder="Harga bahan"/>
+		<input class='input_qt_total' type="number" placeholder="Total bahan"/>
+		<input class='input_qt_usage' type="number" placeholder="Yang digunakan"/>
+	</div>
+</div>
+
+<hr>
+<button id="addform_btn" onclick="addForm()">+ Bahan baru</button>	
+<div class="clearfix">
+	<button id="total_btn" onclick="countCapital()">Hitung Modal</button>	
+</div>
+
+<div id="result"></div>
+
+</section>
+
+
+<script>
+	function addForm() {
+		const clone = document.getElementsByClassName('form_row')[0].cloneNode(true)
+		document.getElementById('forms').appendChild(clone)
+	}
+
+	function countCapital() {
+		const rows = document.getElementsByClassName('form_row')
+		let costPerUnit = []
+		let textExplanation = '<p>Rincian: </p>'
+		for (var i=0; i<rows.length; i++) {
+			let name = rows[i].querySelector('.input_name').value
+			let price = rows[i].querySelector('.input_price').value
+			let qt_total = rows[i].querySelector('.input_qt_total').value
+			let qt_usage = rows[i].querySelector('.input_qt_usage').value
+
+			let cost_unit = (qt_usage / qt_total) * price
+			costPerUnit.push( cost_unit )
+			textExplanation += `<li>${name} -> harga bahan yang dipakai = ${cost_unit.toFixed(2)}</li>`
+		}
+
+		const sum = costPerUnit.reduce((a, b) => a + b, 0)
+		
+		let summaryText = `<p><b>Modal makanan per porsi = ${formatPrice(sum)}</b></p>` + textExplanation
+		document.getElementById('result').insertAdjacentHTML('beforeend', summaryText)
+	}
+
+	function formatPrice(num) {
+		let formatNum = new Intl.NumberFormat('id-ID').format(num.toFixed(2))
+		return 'Rp.'+formatNum
+	}
+</script>
+
+<style>
+input {
+	padding: 5px 2px;
+}
+#calculator {
+	margin: 40px 0;
+	background: #eee;
+	padding: 20px;
+}
+.form_row {
+	margin-bottom: 10px;
+}
+button{
+	border: none;
+	border-radius: 5px;
+}
+#addform_btn{
+	float: right;
+	background: #537DEE;
+	color:  white;
+	padding: 5px;
+}
+#total_btn{
+	margin-top: 20px;
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	background: #2755EE;
+	color:  white;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+
+
+<h2> Cara Menggunakan </h2>
+<p><b>Contoh kasus</b></p>
+
+<li>  Kamu mau masak "kue XYZ".  </li>
+<li>  Kue XYZ butuh 2 telur dan 200gr tepung.  </li>
+
+
+<p><b> Bahan yang harus dibeli: </b></p>
+<li> Telur 1 rak = 30 butir = Rp.40.0000  </li>
+<li> Tepung 1 kg = 1000 gr = Rp.20.0000  </li>
+ 
+<p><b>Maka, masukkan di kalkukator:</b></p>
+<pre>
+    <code>
+Nama   | Harga | Total  | Yang digunakan
+-----------------------------------------
+Telur  | 40000 | 30     |  2  
+Tepung | 20000 | 1000   |  200  
+
+*harga tidak perlu pakai Rp, koma atau titik
+*satuan takaran tidak perlu ditulis
+
+</code>
+</pre>
+
+
+<h2> Disclaimer </h2>
+<p>
+Ini adalah bahan yang bisa dihitung saja.  
+Hitung modal tentu bukan hanya bahannya saja.  
+Ada biaya lain, seperti:  </p>
+<li> Tenaga kerja  </li>
+<li> Modal alat  </li>
+<li> Biaya operasional (listrik, gas, etc.. )  </li>
+
+<br><br><br>
+</main>
+@endsection

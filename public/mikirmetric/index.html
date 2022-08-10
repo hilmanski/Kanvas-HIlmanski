@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metric berpikir - hilmanski</title>
+    <meta name="description" content="Metric berpikir mulai dari tidur hingga stress">
+
+    <!-- Meta Graph -->
+    <meta property="og:title" content="Metric berpikir - hilmanski">
+    <meta property="og:description" content="Metric berpikir mulai dari tidur hingga stress">
+    <meta property="og:image" content="https://i.ibb.co/D7pvGDc/Screen-Shot-2021-05-05-at-11-41-41-AM.png">
+    <meta property="og:url" content="https://kanvas.hilman.space">
+
+    <!-- Meta Twitter -->
+    <meta name="twitter:title" content="Metric berpikir - hilmanski ">
+    <meta name="twitter:description" content="Metric berpikir mulai dari tidur hingga stress">
+    <meta name="twitter:image" content="https://i.ibb.co/D7pvGDc/Screen-Shot-2021-05-05-at-11-41-41-AM.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+
+<body>
+    
+<section>
+    <main>
+        <br><br>
+<nav>
+<a href="/">< Home</a>
+</nav>
+<br>		
+        <div class="center">
+            <h3>Slide ke kondisi berpikir kamu</h3>
+            <br>
+            <p id="emoji"> 🤔 </p>
+            <span id='desc'> ... </span>
+        </div>
+    
+        <br>
+        <div class="slidecontainer">
+            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        </div>
+    
+        <div class="flex">
+            <div>Tidur</div>
+            <div>Halu</div>
+            <div>Ide</div>
+            <div>Mikir</div>
+            <div>Overthinking</div>
+            <div>Stress</div>
+        </div>
+    
+        <style>
+            a {
+                text-decoration: underline;
+                color: black;
+            }
+    
+            h3 {
+                margin-top: 10%;
+            }
+    
+            .center {
+                text-align: center;
+            }
+    
+            #emoji {
+                font-size: 10rem;
+                margin: 100px 0;
+            }
+    
+            .flex {
+                display: flex;
+                justify-content: space-around;
+            }
+    
+            .flex div {
+                text-align: center;
+            }
+    
+            .slidecontainer {
+                width: 100%;
+            }
+    
+            .slider {
+                -webkit-appearance: none;
+                width: 100%;
+                height: 15px;
+                border-radius: 5px;
+                background: #d3d3d3;
+                outline: none;
+                opacity: 0.7;
+                -webkit-transition: .2s;
+                transition: opacity .2s;
+            }
+    
+            .slider:hover {
+                opacity: 1;
+            }
+    
+            .slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                background: #04AA6D;
+                cursor: pointer;
+            }
+    
+            .slider::-moz-range-thumb {
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                background: #04AA6D;
+                cursor: pointer;
+            }
+    
+            @media only screen and (max-width: 760px) {
+                body {
+                    font-size: 16px;
+                }
+            }
+        </style>
+    
+        <script>
+            var slider = document.getElementById("myRange");
+            var emoji = document.getElementById("emoji");
+            var desc = document.getElementById("desc");
+
+            const level = [
+                {
+                    emoji: "😴",
+                    desc: "ngga mikir, lebih suka tidur, selamat bermimpi"
+                },
+                {
+                    emoji: "🤤",
+                    desc: "Halu... alias rajin menghayal mau jadi ini, mau jadi itu"
+                },
+                {
+                    emoji: "🧐",
+                    desc: "Mulai mikir, tapi masih sekedar ide"
+                },
+                {
+                    emoji: "🤔",
+                    desc: "Berpikir.. mungkin kalau bikin X bisa jadi X"
+                },
+                {
+                    emoji: "😫",
+                    desc: "Tapi gimana kalau gagal.. gimana kalau ngga berhasil.."
+                },
+                {
+                    emoji: "🤯",
+                    desc: "Aduh.. emang gue ngga bisa apa-apa, gue cuma butiran debu"
+                }
+            ]
+
+
+            slider.oninput = function () {
+                switch (true) {
+                    case (this.value < 1 / 6 * 100):
+                        updateEmojiAndText(0)
+                        break;
+                    case (this.value < 2 / 6 * 100):
+                        updateEmojiAndText(1)
+                        break;
+                    case (this.value < 3 / 6 * 100):
+                        updateEmojiAndText(2)
+                        break;
+                    case (this.value < 4 / 6 * 100):
+                        updateEmojiAndText(3)
+                        break;
+                    case (this.value < 5 / 6 * 100):
+                        updateEmojiAndText(4)
+                        break;
+                    case (this.value < 100):
+                        updateEmojiAndText(5)
+                        break;
+                }
+
+            }
+
+            function updateEmojiAndText(index) {
+                emoji.innerText = level[index].emoji
+                desc.innerText = level[index].desc
+                return
+            }
+        </script>
+
+</body>
+</html>
